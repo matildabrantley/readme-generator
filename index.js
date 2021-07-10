@@ -1,9 +1,32 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generateREADME = (devResponse) => 
-` 
+const generateREADME = (devResponse) => {
+  let licenseBadge;
+  switch (devResponse.license){
+    case('MIT License'): 
+      licenseBadge = '![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)';
+      break;
+    case('APACHE 2.0 License'):
+      licenseBadge = '![Generic badge](https://img.shields.io/badge/License-APACHE-purple.svg)';
+      break;
+    case('BSD 3 License'):
+      licenseBadge = '![Generic badge](https://img.shields.io/badge/License-BSD3-green.svg)';
+      break;
+    case('GNU General Public License'):
+      licenseBadge = '![Generic badge](https://img.shields.io/badge/License-GPL-red.svg)';
+      break;
+    case('Mozilla Public License 2.0'):
+      licenseBadge = '![Generic badge](https://img.shields.io/badge/License-Mozilla-orange.svg)';
+      break;
+    default: 
+      licenseBadge = "No License";
+  }
+
+
+return ` 
 # ${devResponse.project}
+${licenseBadge}
 
 ### [My GitHub](https://github.com/${devResponse.gitUsername})
 
@@ -40,6 +63,7 @@ Questions about the project may be directed to my email at ${devResponse.email}.
 Here is a link to [my GitHub](https://github.com/${devResponse.gitUsername}) 
 for access my other work.
 `;
+}
 
 inquirer
 .prompt([

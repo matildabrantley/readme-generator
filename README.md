@@ -1,5 +1,6 @@
  
 # l
+![Generic badge](https://img.shields.io/badge/License-APACHE-purple.svg)
 
 ### [My GitHub](https://github.com/l)
 
@@ -22,7 +23,7 @@ l
   * l
 ## Testing
 * The following command runs tests:
-  * 
+  * l
 
 ## Usage
 
@@ -30,7 +31,7 @@ l
 * What you should know about this GitHub repository:
   * l
 ## License
-The project is licensed under the Mozilla Public License 2.0 license.
+The project is licensed under the APACHE 2.0 License license.
 ## Questions
 Questions about the project may be directed to my email at l.
 Here is a link to [my GitHub](https://github.com/l) 
