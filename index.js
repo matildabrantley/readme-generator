@@ -3,53 +3,92 @@ const fs = require('fs');
 
 const generateREADME = (devResponse) => 
 ` 
-# ${devResponse.title};
+# ${devResponse.project}
 
-## ${devResponse.headerColor};
+### [My GitHub](https://github.com/${devResponse.gitUsername})
+
+## Table of Contents:
+
+* [Installing](#installing)
+* [Usage](#usage)
+* [Testing](#testing)
+* [Contributing](#contributing)
+* [License](#license)
+* [Questions](#questions)
+
+## Description
+${devResponse.description}
+## Usage
+${devResponse.usage}
+## 
+## Installing 
+* The following command installs dependencies:
+  * ${devResponse.installCommand}
+## Testing
+* The following command runs tests:
+  * ${devResponse.testCommand}
+
+## Usage
+
+## Contributing
+* What you should know about this GitHub repository:
+  * ${devResponse.repoInfo}
+## License
+The project is licensed under the ${devResponse.license} license.
+## Questions
+Questions about the project may be directed to my email at ${devResponse.email}.
+Here is a link to [my GitHub](https://github.com/${devResponse.gitUsername}) 
+for access my other work.
 `;
 
 inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'gitUser',
-      message: 'What is your GitHub username?',
+.prompt([
+  {
+    type: 'input',
+    name: 'project',
+    message: 'What is the name of your project?',
+  },
+  {
+    type: 'input',
+    name: 'description',
+    message: 'What is a brief description of your project?',
+  },
+  {
+    type: 'input',
+    name: 'usage',
+    message: 'What are some of the usage cases of this project?',
+  },
+  {
+    type: 'input',
+    name: 'gitUsername',
+    message: 'What is your GitHub username?',
     },
-    {
+  {
       type: 'input',
       name: 'email',
       message: 'What is your email?',
-    },
-    {
-      type: 'input',
-      name: 'project',
-      message: 'What is the name of your project?',
-    },
-    {
-      type: 'input',
-      name: 'description',
-      message: 'What is a brief description of your project?',
-    },
-    {
+  },
+  {
       type: 'input',
       name: 'installCommand',
-      message: 'Which command installs dependencies?',
-    },
-    {
+      message: 'What is the command  that installs dependencies?',
+  },
+  {
       type: 'input',
       name: 'testCommand',
-      message: 'Which command runs tests?',
-    },
-    {
+      message: 'What is the command that runs tests?',
+  },
+  {
       type: 'input',
       name: 'repoInfo',
       message: 'What should a user know about your GitHub repository?',
-    },
-    {
-      type: 'input',
+  },
+  {
+      type: 'list',
       name: 'license',
       message: 'Under which license is this project published?',
-    }
+      choices: ['MIT License', 'APACHE 2.0 License', 'BSD 3 License', 'GNU General Public License', 'Mozilla Public License 2.0', 'No License'],
+  }
   ])
   .then((devResponse) => {
     const readmeContent = generateREADME(devResponse);
